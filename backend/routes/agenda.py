@@ -742,7 +742,7 @@ async def get_available_slots(
     slug: str,
     staff_id: str,
     service_id: str,
-    date: str
+    booking_date_str: str = Query(..., alias="date")
 ):
     """Get available time slots for a date."""
     db = get_db(request)
@@ -756,7 +756,7 @@ async def get_available_slots(
         raise HTTPException(status_code=404, detail="Service not found")
     
     # Parse date
-    booking_date = datetime.strptime(date, "%Y-%m-%d")
+    booking_date = datetime.strptime(booking_date_str, "%Y-%m-%d")
     day_name = booking_date.strftime("%A").lower()
     
     # Get working hours
