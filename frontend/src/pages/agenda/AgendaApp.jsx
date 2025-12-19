@@ -14,43 +14,36 @@ import Settings from './Settings';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const AgendaApp = () => {
-  const location = useLocation();
+const AgendaAppContent = () => {
   const { user, loading: authLoading } = useAuth();
   const [business, setBusiness] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Handle session_id in URL hash synchronously (before render completes)
-  // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
-  if (location.hash?.includes('session_id=')) {
-    return <AuthCallback />;
-  }
-
   useEffect(() => {
+    const fetchBusiness = async () => {
+      try {
+        const res = await fetch(`${API}/agenda/businesses`, {
+          credentials: 'include'
+        });
+        if (res.ok) {
+          const businesses = await res.json();
+          if (businesses.length > 0) {
+            setBusiness(businesses[0]);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch business:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (user && !authLoading) {
       fetchBusiness();
     } else if (!authLoading) {
       setLoading(false);
     }
   }, [user, authLoading]);
-
-  const fetchBusiness = async () => {
-    try {
-      const res = await fetch(`${API}/agenda/businesses`, {
-        credentials: 'include'
-      });
-      if (res.ok) {
-        const businesses = await res.json();
-        if (businesses.length > 0) {
-          setBusiness(businesses[0]);
-        }
-      }
-    } catch (error) {
-      console.error('Failed to fetch business:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleOnboardingComplete = (newBusiness) => {
     setBusiness(newBusiness);
@@ -94,6 +87,18 @@ const AgendaApp = () => {
       } />
     </Routes>
   );
+};
+
+const AgendaApp = () => {
+  const location = useLocation();
+
+  // Handle session_id in URL hash synchronously (before render completes)
+  // REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
+  if (location.hash?.includes('session_id=')) {
+    return <AuthCallback />;
+  }
+
+  return <AgendaAppContent />;
 };
 
 export default AgendaApp;
