@@ -171,11 +171,14 @@ backend:
     file: "routes/agenda.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Create, list, update services. Toggle active status. Tested via curl"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /services (list), POST /services (create), PUT /services/{id} (update including is_active toggle). All service CRUD operations working correctly."
 
   - task: "Appointment Management"
     implemented: true
