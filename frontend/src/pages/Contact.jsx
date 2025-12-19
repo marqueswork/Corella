@@ -63,7 +63,7 @@ const Contact = () => {
             Get in touch
           </h1>
           <p className="text-lg md:text-xl text-secondary-brand max-w-2xl mx-auto">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            Have questions? We would love to hear from you. Send us a message and we will respond as soon as possible.
           </p>
         </div>
       </section>
