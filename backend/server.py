@@ -78,13 +78,17 @@ async def get_status_checks():
     
     return status_checks
 
-# Include the router in the main app
+# Include routers in the api router
+api_router.include_router(auth_router)
+api_router.include_router(agenda_router)
+
+# Include the main api router in the app
 app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -95,7 +99,3 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
