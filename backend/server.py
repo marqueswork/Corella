@@ -13,6 +13,7 @@ from contextlib import asynccontextmanager
 
 from routes.auth import router as auth_router
 from routes.agenda import router as agenda_router
+from routes.billing import router as billing_router
 
 
 ROOT_DIR = Path(__file__).parent
