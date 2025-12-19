@@ -252,6 +252,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "Auth context with Google login redirect, session management. Requires real OAuth flow to test"
+      - working: "NA"
+        agent: "testing"
+        comment: "✅ LOGIN PAGE UI TESTED: Login page loads correctly with Corella Agenda branding, Google sign-in button present and styled properly, 'Back to Corella home' link works correctly. Auth flow itself cannot be tested without real OAuth credentials, but UI components are fully functional."
 
   - task: "Agenda Dashboard UI"
     implemented: true
