@@ -141,11 +141,14 @@ backend:
     file: "routes/agenda.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "List and add staff members. Owner auto-created on business creation"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: Staff endpoints accessible and functional. Owner auto-creation verified during business creation tests."
 
   - task: "Client CRUD Operations"
     implemented: true
