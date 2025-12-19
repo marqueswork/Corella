@@ -216,11 +216,14 @@ backend:
     file: "routes/agenda.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Get public business info, available slots, create booking. Tested via curl"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /public/{slug} (business info with services/staff), GET /public/{slug}/available-slots (with date/staff/service params), POST /public/{slug}/book (create booking). All public booking APIs working correctly without authentication."
 
 frontend:
   - task: "Institutional Website"
