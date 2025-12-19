@@ -329,13 +329,7 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "Auth - Session Exchange & User Management"
-    - "Business CRUD Operations"
-    - "Client CRUD Operations"
-    - "Service CRUD Operations"
-    - "Appointment Management"
-    - "Public Booking API"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
