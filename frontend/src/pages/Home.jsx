@@ -188,7 +188,7 @@ const Home = () => {
                     </div>
                   </div>
                   <p className="text-body-brand leading-relaxed">
-                    "{testimonial.content}"
+                    &ldquo;{testimonial.content}&rdquo;
                   </p>
                 </CardContent>
               </Card>
