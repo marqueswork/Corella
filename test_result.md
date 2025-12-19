@@ -126,11 +126,14 @@ backend:
     file: "routes/agenda.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Create, list, get, update business. Tested via curl - all working"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /businesses (list), GET /businesses/{id}, POST /businesses (create with unique slug), PUT /businesses/{id} (update name/working_hours). All business CRUD operations working correctly."
 
   - task: "Staff Management"
     implemented: true
