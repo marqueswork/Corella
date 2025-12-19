@@ -82,6 +82,7 @@ async def get_status_checks():
 # Include routers in the api router
 api_router.include_router(auth_router)
 api_router.include_router(agenda_router)
+api_router.include_router(billing_router)
 
 # Include the main api router in the app
 app.include_router(api_router)
