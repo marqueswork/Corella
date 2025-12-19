@@ -156,11 +156,14 @@ backend:
     file: "routes/agenda.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Create, list, update, delete clients. Get client history. Tested via curl"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /clients (list), POST /clients (create), PUT /clients/{id} (update), DELETE /clients/{id}, GET /clients/{id}/history. All client CRUD operations working correctly."
 
   - task: "Service CRUD Operations"
     implemented: true
