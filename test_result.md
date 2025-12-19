@@ -339,10 +339,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Public Booking Page"
-    - "Login Page UI"
-    - "Institutional Website"
-    - "Mobile Responsiveness"
+    - "Agenda Dashboard UI"
+    - "Clients Management UI"
+    - "Services Management UI"
+    - "Calendar View"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
