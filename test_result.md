@@ -201,11 +201,14 @@ backend:
     file: "routes/agenda.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Returns today/week/month stats, today appointments, upcoming appointments. Tested via curl"
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /dashboard returns stats (today/week/month counts, total_clients), today_appointments array, upcoming_appointments array. Dashboard API working correctly."
 
   - task: "Public Booking API"
     implemented: true
